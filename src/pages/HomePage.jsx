@@ -2,27 +2,32 @@ import {  Search } from "lucide-react";
 import { ResipeCard } from "../components/ResipeCard";
 import { useEffect, useState } from "react";
 
+const APP_NAME = import.meta.env.VITE_APP_NAME;
+const APP_KEY = import.meta.env.VITE_APP_KEY;
+
 export default function HomePage() {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const APP_NAME=import.meta.env.VITE_APP_NAME;
-    const APP_KEY = import.meta.env.VITE_APP_KEY;
+
 
     const fetchRecipes = async (quary) => {
         setLoading(true);
         setRecipes([]);
+        
         
         try {
             const res = await fetch(`https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${quary}`,
                 {
                     method: "GET",
                     headers: {
-                        'x-rapidapi-host': "tasty.p.rapidapi.com",
-                        'x-rapidapi-key': "7d87ca1dd3msh2370df29128fe86p152a2bjsn4a086507ae0d"
+                        'x-rapidapi-host': APP_NAME,
+                        'x-rapidapi-key': APP_KEY
                     }
                 }
+                
             );
+
             const data = await res.json();
             setRecipes(data.results);
         } catch (error) {
