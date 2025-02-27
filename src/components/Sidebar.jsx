@@ -16,7 +16,7 @@ const DesktopSidebar = () => {
                 <img src="./mobile-logo.svg" alt="logo" className="block md:hidden"/>
             </div>
             <ul className="flex flex-col gap-8 items-center md:items-start">
-                <Link to={"/home"} className="flex gap-2">
+                <Link to={"/"} className="flex gap-2">
                     <Home size={"24"} className="cursor-pointer" />
                     <span className="font-bold hidden md:block">Home</span>
                 </Link>
@@ -36,7 +36,7 @@ const DesktopSidebar = () => {
 
 const MobileSidebar = () => {
     return <div className="flex justify-center gap-10 w-full fixed bottom-0 left-0 border-t bg-white z-10 p-2 sm:hidden">
-        <Link to={"/home"}>
+        <Link to={"/"}>
             <Home size={"24"} className="cursor-pointer" />
         </Link>
         <Link to={"/favorites"}>
